@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Judge Tshwarelo — Software Engineer. Portfolio for product-focused web & systems engineer. Ready for interviews and production deployments." />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Judge Tshwarelo — Software Engineer</title>
+
+  <!-- Tailwind via CDN (good for quick prototypes). Replace with a build pipeline for production. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Small custom styles for nicer focus states and fancy underlines */
+    :root { --accent: #0ea5a4; }
+    .fancy-underline { position: relative; display: inline-block; }
+    .fancy-underline::after { content: ''; position: absolute; left:0; bottom:0.06em; width:100%; height:0.24em; background:linear-gradient(90deg,var(--accent), #06b6d4); border-radius:6px; transform-origin:left; transform:scaleX(0); transition:transform .28s ease; }
+    .fancy-underline:hover::after, .fancy-underline:focus::after { transform:scaleX(1); }
+    /* subtle glass card */
+    .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(6px); border:1px solid rgba(255,255,255,0.04); }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased selection:bg-teal-400 selection:text-slate-900">
+
+  <header class="fixed w-full z-40">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-400 flex items-center justify-center text-slate-900 font-bold">JT</div>
+        <div class="hidden md:block">
+          <div class="text-sm font-semibold">Judge Tshwarelo</div>
+          <div class="text-xs text-slate-400">Software Engineer</div>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <div class="hidden md:flex items-center gap-4 text-sm">
+          <a href="#about" class="hover:underline">About</a>
+          <a href="#projects" class="hover:underline">Projects</a>
+          <a href="#skills" class="hover:underline">Skills</a>
+          <a href="#contact" class="hover:underline">Contact</a>
+        </div>
+
+        <button id="themeToggle" aria-label="Toggle dark/light theme" class="p-2 rounded-md ring-1 ring-white/6 glass-hover focus:outline-none">
+          <svg id="iconLight" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M3 12H2m15.36-6.36l.7.7M6.34 17.66l-.7.7m12.02 0l-.7-.7M6.34 6.34l-.7-.7M12 7a5 5 0 100 10 5 5 0 000-10z" /></svg>
+          <svg id="iconDark" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+        </button>
+
+        <a href="#contact" class="ml-2 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-teal-400 text-slate-900 font-medium text-sm hover:scale-105 transition">Hire / Interview</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-28">
+
+    <!-- HERO -->
+    <section id="hero" class="max-w-6xl mx-auto px-6 py-14 md:py-20 lg:py-28 grid md:grid-cols-2 gap-10 items-center">
+      <div class="space-y-6">
+        <p class="text-sm text-teal-300 font-medium">Hello — I'm</p>
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Judge Tshwarelo<span class="text-teal-400">.</span></h1>
+        <p class="text-xl text-slate-300 max-w-2xl">Product-minded software engineer focused on web systems, payments, and building scalable experiences. Ready for systems and production at Google.</p>
+
+        <div class="flex flex-wrap gap-3 items-center">
+          <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-slate-100/5 ring-1 ring-white/6 hover:scale-105 transition">Schedule Interview</a>
+          <a href="resume.pdf" download class="inline-flex items-center gap-2 px-4 py-2 rounded-md glass ring-1 ring-white/6 hover:shadow-lg transition">Download CV</a>
+          <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-2 rounded-md">GitHub</a>
+          <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-2 rounded-md">LinkedIn</a>
+        </div>
+
+        <div class="mt-6 flex gap-4 text-sm text-slate-400">
+          <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Open to work</div>
+          <div class="flex items-center gap-2">Based in Johannesburg, South Africa</div>
+        </div>
+
+      </div>
+
+      <div class="relative">
+        <div class="w-full aspect-[4/3] rounded-2xl glass p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-xs text-slate-400">Featured project</div>
+            <h3 class="text-xl font-semibold mt-2">Senoamadi Bank — Internal Transfer System</h3>
+            <p class="text-sm text-slate-300 mt-2">Built a lightweight internal transfer engine, transaction table schemas, and robust server-side checks. Prototype includes PHP + MySQL backend and responsive UI.</p>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="text-xs text-slate-400">Tech</div>
+            <div class="flex gap-2">
+              <span class="px-2 py-1 rounded bg-white/5 text-xs">PHP</span>
+              <span class="px-2 py-1 rounded bg-white/5 text-xs">MySQL</span>
+              <span class="px-2 py-1 rounded bg-white/5 text-xs">Tailwind</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute -bottom-6 right-6 hidden md:block">
+          <!-- simple decorative SVG avatar -->
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="120" rx="20" fill="url(#g)"/>
+            <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#0ea5a4"/></linearGradient></defs>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2 space-y-4">
+          <h2 class="text-2xl font-bold">About</h2>
+          <p class="text-slate-300">I'm a hands-on engineer who ships production systems. I care about correctness, maintainability, and product impact. I enjoy building payment flows, backend services, and developer tools. I'm comfortable with full-stack work and can own features end-to-end — from database schema to UX.</p>
+
+          <div class="mt-4 grid sm:grid-cols-2 gap-4">
+            <div class="p-4 glass rounded-lg">
+              <div class="text-xs text-slate-400">Experience</div>
+              <div class="font-semibold">3+ years</div>
+              <div class="text-sm text-slate-400">Production web & backend systems</div>
+            </div>
+            <div class="p-4 glass rounded-lg">
+              <div class="text-xs text-slate-400">Roles</div>
+              <div class="font-semibold">Full-stack Engineer</div>
+              <div class="text-sm text-slate-400">Payments, APIs, Scaling</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="p-4 glass rounded-lg">
+          <div class="text-xs text-slate-400">Quick facts</div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-300">
+            <li><strong>Location:</strong> Johannesburg</li>
+            <li><strong>Available:</strong> Immediately</li>
+            <li><strong>Languages:</strong> English (fluent)</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-12">
+      <h2 class="text-2xl font-bold">Selected Projects</h2>
+      <p class="text-slate-400 mt-2">Projects that show production thinking, reliability, and product focus.</p>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <!-- Project card 1 -->
+        <article class="p-6 rounded-xl glass">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="font-semibold">Senoamadi Bank — Internal Transfers</h3>
+              <div class="text-xs text-slate-400">Payments · Backend · Security</div>
+            </div>
+            <div class="text-sm text-slate-400">2025</div>
+          </div>
+          <p class="mt-3 text-slate-300 text-sm">Designed DB schemas, transaction safety checks, and built a UI for internal fund movement. Implemented validation to avoid double-spend and partial updates.</p>
+          <div class="mt-4 flex gap-2 text-xs">
+            <span class="px-2 py-1 rounded bg-white/5">PHP</span>
+            <span class="px-2 py-1 rounded bg-white/5">MySQL</span>
+            <span class="px-2 py-1 rounded bg-white/5">Tailwind</span>
+          </div>
+          <div class="mt-4 flex gap-3">
+            <a href="https://github.com/your-github/senoamadi-bank" target="_blank" class="text-sm hover:underline">Code</a>
+            <a href="#contact" class="text-sm hover:underline">Read case study</a>
+          </div>
+        </article>
+
+        <!-- Project card 2 -->
+        <article class="p-6 rounded-xl glass">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="font-semibold">Holiness Companion — Church Web App</h3>
+              <div class="text-xs text-slate-400">Web · UX · Forms</div>
+            </div>
+            <div class="text-sm text-slate-400">2025</div>
+          </div>
+          <p class="mt-3 text-slate-300 text-sm">Responsive church website with event management, quizzes, and admin dashboard. Emphasis on accessibility and low-bandwidth performance.</p>
+          <div class="mt-4 flex gap-2 text-xs">
+            <span class="px-2 py-1 rounded bg-white/5">HTML</span>
+            <span class="px-2 py-1 rounded bg-white/5">PHP</span>
+            <span class="px-2 py-1 rounded bg-white/5">Netlify</span>
+          </div>
+          <div class="mt-4 flex gap-3">
+            <a href="https://holiness-companion-church.netlify.app/" target="_blank" class="text-sm hover:underline">Live</a>
+            <a href="https://github.com/your-github/holiness" target="_blank" class="text-sm hover:underline">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 py-12">
+      <h2 class="text-2xl font-bold">Skills</h2>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-4 rounded-lg glass"><div class="text-xs text-slate-400">Languages</div><div class="font-semibold">PHP · JavaScript · Python</div></div>
+        <div class="p-4 rounded-lg glass"><div class="text-xs text-slate-400">Web</div><div class="font-semibold">HTML · CSS · Tailwind · React</div></div>
+        <div class="p-4 rounded-lg glass"><div class="text-xs text-slate-400">Databases</div><div class="font-semibold">MySQL · Postgres</div></div>
+        <div class="p-4 rounded-lg glass"><div class="text-xs text-slate-400">Other</div><div class="font-semibold">APIs · Testing · CI/CD</div></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <h2 class="text-2xl font-bold">Contact</h2>
+          <p class="text-slate-400 mt-2">I’m available for interviews and contract work. Fast responses and production-ready code.</p>
+
+          <div class="mt-6 space-y-4">
+            <div class="p-4 glass rounded-lg">
+              <div class="text-xs text-slate-400">Email</div>
+              <a href="mailto:judge@example.com" class="font-semibold block">judge@example.com</a>
+            </div>
+
+            <div class="p-4 glass rounded-lg">
+              <div class="text-xs text-slate-400">Phone (WhatsApp)</div>
+              <div class="font-semibold">+27 600 000 000</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="contactForm" class="space-y-4 bg-slate-900/30 p-6 rounded-lg glass" onsubmit="handleSubmit(event)">
+          <label class="block text-sm">
+            <span class="text-slate-300">Your name</span>
+            <input required name="name" class="mt-1 block w-full rounded-md bg-transparent border border-white/6 px-3 py-2 focus:ring-2 focus:ring-teal-400 outline-none" />
+          </label>
+
+          <label class="block text-sm">
+            <span class="text-slate-300">Email</span>
+            <input required type="email" name="email" class="mt-1 block w-full rounded-md bg-transparent border border-white/6 px-3 py-2 focus:ring-2 focus:ring-teal-400 outline-none" />
+          </label>
+
+          <label class="block text-sm">
+            <span class="text-slate-300">Message</span>
+            <textarea required name="message" rows="4" class="mt-1 block w-full rounded-md bg-transparent border border-white/6 px-3 py-2 focus:ring-2 focus:ring-teal-400 outline-none"></textarea>
+          </label>
+
+          <div class="flex items-center gap-3">
+            <button type="submit" class="px-4 py-2 rounded-md bg-teal-400 text-slate-900 font-medium">Send message</button>
+            <span id="formStatus" class="text-sm text-slate-400">Or email me at <a href="mailto:judge@example.com" class="underline">judge@example.com</a></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="border-t border-white/5 mt-12">
+      <div class="max-w-6xl mx-auto px-6 py-6 text-sm text-slate-400 flex flex-col md:flex-row justify-between items-center">
+        <div>© <span id="year"></span> Judge Tshwarelo — Built for interviews.</div>
+        <div class="mt-3 md:mt-0">Made with ❤️ · <a href="#projects" class="hover:underline">Projects</a></div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (persist to localStorage)
+    const themeToggle = document.getElementById('themeToggle');
+    const iconLight = document.getElementById('iconLight');
+    const iconDark = document.getElementById('iconDark');
+
+    function applyTheme(theme) {
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+        iconDark.classList.add('hidden');
+        iconLight.classList.remove('hidden');
+        document.body.style.background = '#f8fafc';
+        document.body.style.color = '#0f172a';
+      } else {
+        document.documentElement.classList.add('dark');
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+        document.body.style.background = '';
+        document.body.style.color = '';
+      }
+    }
+
+    // initialize
+    const saved = localStorage.getItem('jt-theme') || 'dark';
+    applyTheme(saved);
+
+    themeToggle.addEventListener('click', () => {
+      const next = localStorage.getItem('jt-theme') === 'light' ? 'dark' : 'light';
+      localStorage.setItem('jt-theme', next);
+      applyTheme(next);
+    });
+
+    // friendly contact form handler (sends mailto or shows data)
+    function handleSubmit(e) {
+      e.preventDefault();
+      const f = e.target;
+      const name = encodeURIComponent(f.name.value.trim());
+      const email = encodeURIComponent(f.email.value.trim());
+      const message = encodeURIComponent(f.message.value.trim());
+
+      // open user's email client as fallback for fast submissions
+      const subject = encodeURIComponent('Portfolio contact from ' + decodeURIComponent(name));
+      const body = `Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\n\n${decodeURIComponent(message)}`;
+      window.location.href = `mailto:judge@example.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    }
+
+    // Small keyboard shortcut: press 'g' to jump to projects (quick demo for interview!)
+    window.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'g' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>

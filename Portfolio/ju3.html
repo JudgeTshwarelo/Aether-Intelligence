@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Judge T Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background: #f4f6f9;
+        color: #333;
+        transition: background 0.3s, color 0.3s;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #4a90e2;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+      }
+      header nav a {
+        margin: 0 1rem;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      header nav a:hover {
+        text-decoration: underline;
+      }
+      section {
+        padding: 100px 10%;
+        min-height: 100vh;
+      }
+      h1,
+      h2 {
+        margin-bottom: 1rem;
+      }
+      .btn {
+        padding: 10px 20px;
+        background: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .btn:hover {
+        background: #357abd;
+      }
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+      .projects {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      .card {
+        background: white;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      footer {
+        background: #4a90e2;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+      }
+      /* Dark mode */
+      body.dark {
+        background: #1c1c1c;
+        color: #eee;
+      }
+      body.dark header,
+      body.dark footer {
+        background: #000;
+      }
+      body.dark .card {
+        background: #2b2b2b;
+      }
+      /* AI popup */
+      #ai-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        height: 400px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      #ai-header {
+        background: #4a90e2;
+        color: white;
+        padding: 0.5rem;
+        text-align: center;
+      }
+      #ai-chat {
+        flex: 1;
+        padding: 0.5rem;
+        overflow-y: auto;
+        font-size: 0.9rem;
+      }
+      .msg {
+        margin: 0.3rem 0;
+        padding: 0.5rem;
+        border-radius: 8px;
+        max-width: 80%;
+      }
+      .user {
+        background: #d1ecf1;
+        align-self: flex-end;
+      }
+      .ai {
+        background: #e2e3e5;
+        align-self: flex-start;
+      }
+      #ai-controls {
+        padding: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
+      }
+      #ai-controls button {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2>Judge T</h2>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="btn" onclick="toggleDark()">🌙</button>
+    </header>
+
+    <section id="home">
+      <h1>Hi, I’m Judge T</h1>
+      <p>Software Developer | AI Enthusiast | Robotics Builder</p>
+      <button class="btn">Download Resume</button>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am passionate about building solutions in AI, software development,
+        and robotics. I enjoy learning, experimenting, and creating real-world
+        projects that solve problems.
+      </p>
+      <p><b>Skills:</b> Web Dev, Python, AI/ML, Robotics, Data Science</p>
+    </section>
+
+    <section id="portfolio">
+      <h2>My Projects</h2>
+      <div class="grid projects">
+        <div class="card">
+          <h3>AI Task Manager</h3>
+          <p>Voice-enabled task manager with reminders & AI buddy.</p>
+          <a href="#">Demo</a> | <a href="#">GitHub</a>
+        </div>
+        <div class="card">
+          <h3>Portfolio Website</h3>
+          <p>A modern responsive personal portfolio website.</p>
+        </div>
+        <div class="card">
+          <h3>Robotics Simulation</h3>
+          <p>3D car simulator with Unity + AI navigation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <div class="grid projects">
+        <div class="card">
+          <h3>Web Development</h3>
+          <p>Modern responsive websites & apps.</p>
+        </div>
+        <div class="card">
+          <h3>AI Solutions</h3>
+          <p>Custom AI models, chatbots & automation.</p>
+        </div>
+        <div class="card">
+          <h3>Robotics</h3>
+          <p>Simulation & automation systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>
+        Email:
+        <a href="mailto:judgetshwarelo@gmail.com">judgetshwarelo@gmail.com</a>
+      </p>
+      <p>GitHub | LinkedIn</p>
+      <form onsubmit="sendMessage(event)">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Your email" required />
+        <textarea placeholder="Your message" required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </section>
+
+    <footer>© 2025 Judge Tshwarelo | All rights reserved</footer>
+
+    <!-- AI Buddy -->
+    <div id="ai-box">
+      <div id="ai-header">🤖 AI Buddy</div>
+      <div id="ai-chat"></div>
+      <div id="ai-controls">
+        <button onclick="startListening()">🎤 Talk</button>
+        <button onclick="quizMe()">📚 Quiz</button>
+      </div>
+    </div>
+
+    <script>
+      // Dark mode
+      function toggleDark() {
+        document.body.classList.toggle("dark");
+      }
+
+      // Contact form
+      function sendMessage(e) {
+        e.preventDefault();
+        alert("Message sent! (Integrate EmailJS for real emails)");
+      }
+
+      // --- AI Buddy ---
+      const chatBox = document.getElementById("ai-chat");
+      let selectedVoice = null;
+      let currentQuestion = null;
+
+      function loadVoices() {
+        let voices = speechSynthesis.getVoices();
+        selectedVoice =
+          voices.find((v) => v.lang === "en-US" && v.name.includes("Google")) ||
+          voices[0];
+      }
+      speechSynthesis.onvoiceschanged = loadVoices;
+
+      function addMsg(text, sender) {
+        const msg = document.createElement("div");
+        msg.className = "msg " + sender;
+        msg.textContent = text;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+      function speak(text) {
+        addMsg(text, "ai");
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.voice = selectedVoice;
+        u.rate = 1.1;
+        speechSynthesis.speak(u);
+      }
+
+      function startListening() {
+        const R = new (window.SpeechRecognition ||
+          window.webkitSpeechRecognition)();
+        R.lang = "en-US";
+        R.start();
+        R.onresult = (e) => {
+          const speech = e.results[0][0].transcript.toLowerCase();
+          addMsg(speech, "user");
+          if (speech.includes("task"))
+            speak("Remember to check your to-do list.");
+          else if (speech.includes("study"))
+            speak("How about a 25-minute study sprint?");
+          else if (speech.includes("quiz")) quizMe();
+          else speak("I like chatting with you!");
+        };
+      }
+
+      const quizQuestions = [
+        { q: "What is the capital of France?", a: "paris" },
+        { q: "What language runs in the browser?", a: "javascript" },
+        { q: "2 plus 2 equals?", a: "4" },
+      ];
+
+      function quizMe() {
+        currentQuestion =
+          quizQuestions[Math.floor(Math.random() * quizQuestions.length)];
+        speak("Quiz time! " + currentQuestion.q);
+      }
+    </script>
+  </body>
+</html>

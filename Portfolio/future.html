@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Judge Tshwarelo — CS × Mechatronics Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio showcasing software development, AI, game dev, data science, web dev, and mechatronics projects."
+    />
+    <style>
+      :root {
+        --bg: #0b0e13; /* page background */
+        --panel: #11161f; /* cards/nav */
+        --muted: #8b97a8; /* secondary text */
+        --text: #e7eefb; /* primary text */
+        --brand: #6aa9ff; /* accents */
+        --brand-2: #8a7dff; /* gradient accent */
+        --ok: #10b981; /* tags */
+        --warn: #f59e0b; /* tags */
+        --danger: #ef4444; /* tags */
+        --radius: 18px;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.25);
+        --maxw: 1200px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          "Helvetica Neue", Arial;
+      }
+      a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* ====== Layout ====== */
+      header.nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(11, 14, 19, 0.75);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .nav-wrap {
+        max-width: var(--maxw);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 18px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+      }
+      .brand .logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        display: grid;
+        place-items: center;
+        box-shadow: var(--shadow-soft);
+      }
+      .brand .logo span {
+        font-weight: 900;
+        color: #0b0e13;
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 18px;
+      }
+      nav a {
+        padding: 8px 12px;
+        border-radius: 999px;
+        color: var(--text);
+        opacity: 0.85;
+      }
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        opacity: 1;
+      }
+
+      .container {
+        max-width: var(--maxw);
+        margin: auto;
+        padding: 30px 18px;
+      }
+
+      /* ====== Hero ====== */
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 26px;
+        align-items: center;
+        padding: 40px 0;
+      }
+      .hero-card {
+        background: linear-gradient(
+          180deg,
+          rgba(138, 125, 255, 0.12),
+          rgba(106, 169, 255, 0.08)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+      .hero h1 {
+        font-size: 38px;
+        line-height: 1.15;
+        margin: 6px 0 12px;
+      }
+      .hero h1 .accent {
+        background: linear-gradient(90deg, var(--brand), var(--brand-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero p {
+        color: var(--muted);
+        margin: 0 0 10px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .chip {
+        padding: 6px 10px;
+        border-radius: 10px;
+        background: #0e131b;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 13px;
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: linear-gradient(90deg, var(--brand), var(--brand-2));
+        color: #0b0e13;
+        font-weight: 700;
+        border: none;
+        box-shadow: var(--shadow-soft);
+        cursor: pointer;
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .statbar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .stat {
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 14px;
+        padding: 14px;
+        text-align: center;
+      }
+      .stat b {
+        font-size: 18px;
+      }
+
+      .hero-media {
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        padding: 10px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-media .mock {
+        aspect-ratio: 16/9;
+        border-radius: 12px;
+        background: radial-gradient(
+            1000px 400px at -10% -30%,
+            rgba(106, 169, 255, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            800px 400px at 110% 130%,
+            rgba(138, 125, 255, 0.25),
+            transparent 55%
+          ),
+          #0e131b;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: #8fb4ff;
+      }
+      .hero-media .label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #0b0e13aa;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 6px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+
+      /* ====== Sections ====== */
+      section {
+        margin: 40px 0;
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+      .section-title h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+      .section-title p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      /* ====== Skills ====== */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: var(--radius);
+        padding: 16px;
+        box-shadow: var(--shadow-soft);
+      }
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: #0e131b;
+      }
+
+      /* ====== Timeline ====== */
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .milestone {
+        position: relative;
+        padding: 16px;
+        border-radius: 16px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .milestone::before {
+        content: "";
+        position: absolute;
+        inset: auto 0 -8px 0;
+        margin: auto;
+        width: 60%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--brand),
+          transparent
+        );
+      }
+      .milestone .year {
+        font-weight: 800;
+        color: #bcd2ff;
+        margin-bottom: 6px;
+      }
+      .milestone ul {
+        margin: 8px 0 0 18px;
+        padding: 0;
+      }
+
+      /* ====== Projects ====== */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .project {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .thumb {
+        aspect-ratio: 16/9;
+        border-radius: 12px;
+        background: #0e131b;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: grid;
+        place-items: center;
+        color: #89a8ff;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .meta .pill {
+        font-size: 11px;
+        padding: 6px 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .row .slot {
+        background: #0e131b;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 10px;
+      }
+
+      /* ====== Contact ====== */
+      .contact {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+      }
+      .contact form {
+        display: grid;
+        gap: 10px;
+      }
+      input,
+      textarea {
+        background: #0e131b;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 12px;
+        color: var(--text);
+      }
+      textarea {
+        min-height: 120px;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      /* ====== Footer ====== */
+      footer {
+        margin: 40px 0 10px;
+        color: var(--muted);
+        text-align: center;
+      }
+      
+
+      /* ====== Responsive ====== */
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .skills {
+          grid-template-columns: 1fr 1fr;
+        }
+        .timeline {
+          grid-template-columns: 1fr 1fr;
+        }
+        .projects {
+          grid-template-columns: 1fr 1fr;
+        }
+        .contact {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        nav ul {
+          display: none;
+        }
+        .skills,
+        .timeline,
+        .projects {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ====== Nav ====== -->
+    <header class="nav">
+      <div class="nav-wrap">
+        <div class="brand">
+          <div class="logo"><span>JT</span></div>
+          <span>Judge Tshwarelo</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#timeline">Roadmap</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- ====== Hero ====== -->
+      <section class="hero" id="about">
+        <div class="hero-card">
+          <p>Hi, I’m</p>
+          <h1>
+            Judge Tshwarelo —
+            <span class="accent">Computer Science × Mechatronics</span>
+          </h1>
+          
+          <p>
+            I build things that think and move: software, AI, games,
+            data-powered web apps, and robotics. I love blending algorithms with
+            real-world systems.
+          </p>
+          <div class="chips">
+            <span class="chip">Software Development</span>
+            <span class="chip">Artificial Intelligence</span>
+            <span class="chip">Game Development</span>
+            <span class="chip">Data Science</span>
+            <span class="chip">Web Development</span>
+            <span class="chip">Robotics / Mechatronics</span>
+          </div>
+          <div class="cta">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn ghost" href="#contact">Contact Me</a>
+          </div>
+          <div class="statbar">
+            <div class="stat">
+              <b>10+</b>
+              <div>Portfolio Projects</div>
+            </div>
+            <div class="stat">
+              <b>4</b>
+              <div>Years Roadmap</div>
+            </div>
+            <div class="stat">
+              <b>CS × Mech</b>
+              <div>Interdisciplinary</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media">
+          <div class="label">Featured: Car Simulator / Robotics</div>
+          <div class="mock">Project preview space (video / image)</div>
+        </div>
+      </section>
+
+      <!-- ====== Skills ====== -->
+      <section id="skills">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p>Languages • Frameworks • Tools</p>
+        </div>
+        <div class="skills">
+          <div class="card">
+            <h3>Programming</h3>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">C++</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Data Structures & Algorithms</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>AI & Data</h3>
+            <div class="tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">Scikit‑learn</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Kaggle</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Web Dev</h3>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node</span>
+              <span class="tag">APIs</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Netlify / GitHub Pages</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Mechatronics</h3>
+            <div class="tags">
+              <span class="tag">Arduino</span>
+              <span class="tag">ESP32</span>
+              <span class="tag">Raspberry Pi</span>
+              <span class="tag">Sensors</span>
+              <span class="tag">PID Control</span>
+              <span class="tag">ROS</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Game & Sim</h3>
+            <div class="tags">
+              <span class="tag">Unity</span>
+              <span class="tag">Unreal</span>
+              <span class="tag">Physics</span>
+              <span class="tag">Pathfinding</span>
+              <span class="tag">Reinforcement Learning</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Tools</h3>
+            <div class="tags">
+              <span class="tag">Git & GitHub</span>
+              <span class="tag">Linux</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Docker (basics)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== Timeline / Roadmap ====== -->
+      <section id="timeline">
+        <div class="section-title">
+          <h2>4‑Year Roadmap</h2>
+          <p>From foundations to autonomous systems</p>
+        </div>
+        <div class="timeline">
+          <div class="milestone">
+            <div class="year">Year 1 — Foundations</div>
+            <p>Python, C++, Math, Circuits, DSA.</p>
+            <ul>
+              <li>Arduino line‑following robot</li>
+              <li>Python mini‑game</li>
+              <li>Sensor data analysis</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="year">Year 2 — Integration</div>
+            <p>Embedded, Control, Web, AI basics.</p>
+            <ul>
+              <li>ESP32 IoT automation + dashboard</li>
+              <li>OpenCV object detection</li>
+              <li>Car physics simulation</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="year">Year 3 — Specialization</div>
+            <p>ROS, Deep Learning, CV, Data Science.</p>
+            <ul>
+              <li>Self‑driving RC car</li>
+              <li>Robotic arm (RL)</li>
+              <li>Unity AI traffic sim</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="year">Year 4 — Mastery</div>
+            <p>IoT, Autonomous Systems, Research.</p>
+            <ul>
+              <li>AI drone navigation</li>
+              <li>Smart farming IoT</li>
+              <li>Digital twin (Unity/Unreal)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== Projects ====== -->
+      <section id="projects">
+        <div class="section-title">
+          <h2>Selected Projects</h2>
+          <p>Blending code, AI, and machines</p>
+        </div>
+        <div class="projects">
+          <!-- Project 1 -->
+          <article class="project card">
+            <div class="thumb">Line‑Following Robot (Arduino)</div>
+            <div class="meta">
+              <span class="pill">Arduino</span>
+              <span class="pill">Sensors</span>
+              <span class="pill">PID</span>
+            </div>
+            <p>
+              Two IR sensors + DC motors with PID control. Tuned for smooth
+              cornering and error recovery.
+            </p>
+            <div class="row">
+              <div class="slot">
+                <strong>Video</strong>
+                <div class="thumb" style="aspect-ratio: 16/9">
+                  Embed demo.mp4 here
+                </div>
+              </div>
+              <div class="slot">
+                <strong>Downloads</strong>
+                <ul>
+                  <li><a href="#">Schematics.pdf</a></li>
+                  <li><a href="#">Firmware.ino</a></li>
+                  <li><a href="#">PID-notes.md</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project card">
+            <div class="thumb">OpenCV Object Detection</div>
+            <div class="meta">
+              <span class="pill">Python</span>
+              <span class="pill">OpenCV</span>
+              <span class="pill">AI</span>
+            </div>
+            <p>
+              Real‑time webcam detection with classical CV + CNN baseline.
+              Benchmarked FPS and accuracy.
+            </p>
+            <div class="row">
+              <div class="slot">
+                <strong>Video</strong>
+                <div class="thumb">Embed detection demo</div>
+              </div>
+              <div class="slot">
+                <strong>Downloads</strong>
+                <ul>
+                  <li><a href="#">notebook.ipynb</a></li>
+                  <li><a href="#">weights.onnx</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project card">
+            <div class="thumb">Unity Car Simulator</div>
+            <div class="meta">
+              <span class="pill">Unity</span>
+              <span class="pill">C#</span>
+              <span class="pill">Physics</span>
+            </div>
+            <p>
+              Custom wheel collider tuning, traction curves, and simple AI
+              agents for lane follow & obstacle avoidance.
+            </p>
+            <div class="row">
+              <div class="slot">
+                <strong>Video</strong>
+                <div class="thumb">Gameplay clip</div>
+              </div>
+              <div class="slot">
+                <strong>Downloads</strong>
+                <ul>
+                  <li><a href="#">build.zip</a></li>
+                  <li><a href="#">VehicleController.cs</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project card">
+            <div class="thumb">Self‑Driving RC Car</div>
+            <div class="meta">
+              <span class="pill">Raspberry Pi</span>
+              <span class="pill">PyTorch</span>
+              <span class="pill">CV</span>
+            </div>
+            <p>
+              End‑to‑end steering model trained on road images; added safety
+              controller and telemetry logging.
+            </p>
+            <div class="row">
+              <div class="slot">
+                <strong>Video</strong>
+                <div class="thumb">Track test</div>
+              </div>
+              <div class="slot">
+                <strong>Downloads</strong>
+                <ul>
+                  <li><a href="#">dataset.zip</a></li>
+                  <li><a href="#">model.pt</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="project card">
+            <div class="thumb">Smart Farming IoT</div>
+            <div class="meta">
+              <span class="pill">ESP32</span>
+              <span class="pill">Web</span>
+              <span class="pill">Data</span>
+            </div>
+            <p>
+              Soil, humidity, and temperature sensors streaming to a responsive
+              web dashboard with alerts.
+            </p>
+            <div class="row">
+              <div class="slot">
+                <strong>Video</strong>
+                <div class="thumb">Greenhouse view</div>
+              </div>
+              <div class="slot">
+                <strong>Downloads</strong>
+                <ul>
+                  <li><a href="#">firmware.ino</a></li>
+                  <li><a href="#">dashboard.zip</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project card">
+            <div class="thumb">AI Drone Navigation</div>
+            <div class="meta">
+              <span class="pill">Reinforcement Learning</span>
+              <span class="pill">Unity</span>
+              <span class="pill">Sensors</span>
+            </div>
+            <p>
+              Sim‑to‑real pipeline with obstacle‑rich arenas; reward shaping for
+              smooth trajectories.
+            </p>
+            <div class="row">
+              <div class="slot">
+                <strong>Video</strong>
+                <div class="thumb">Flight run</div>
+              </div>
+              <div class="slot">
+                <strong>Downloads</strong>
+                <ul>
+                  <li><a href="#">training.yaml</a></li>
+                  <li><a href="#">policy.onnx</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ====== Contact ====== -->
+      <section id="contact">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Let’s build something</p>
+        </div>
+        <div class="contact">
+          <form
+            onsubmit="event.preventDefault(); alert('Thanks! I\'ll reply soon.');"
+          >
+            <input type="text" placeholder="Your name" required />
+            <input type="email" placeholder="Email address" required />
+            <textarea placeholder="Message" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+            <p class="note">
+              Prefer email?
+              <a href="mailto:baloyijudge@gmail.com">baloyijudge@gmail.com</a>
+            </p>
+          </form>
+          <div class="card">
+            <h3>Links</h3>/;
+            <p class="note">
+              Deploy on <b>GitHub Pages</b> or <b>Netlify</b>. Replace
+              placeholders with your files or videos.
+            </p>
+            <ul>
+              <li>GitHub: <a href="#">github.com/judgetshwarelo</a></li>
+              <li>LinkedIn: <a href="#">linkedin.com/in/judgetshwarelo</a></li>
+              <li>Resume/CV: <a href="#">download.pdf</a></li>
+            </ul>
+            <h3 style="margin-top: 14px">Tech Focus</h3>
+            <div class="tags">
+              <span class="tag">CS × Mechatronics</span>
+              <span class="tag">AI Robotics</span>
+              <span class="tag">Simulation</span>
+              <span class="tag">Portfolio‑Driven</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="y"></span> Judge Tshwarelo — Build with love for code, AI,
+        and machines.
+      </footer>
+    </main>
+
+    <script>
+      // Set year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Smooth scroll for older browsers
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const target = document.querySelector(a.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
